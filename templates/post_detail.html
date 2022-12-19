@@ -7,7 +7,17 @@
 <h1>{{post.title}}</h1>
 
 <p>{{post.content}}</p>
+
 <p><i>By {{post.user.full_name}} on {{post.create_at}}</i></p>
+
+{% if post.tags %}
+<p>
+    <b>Tags:</b>
+    {% for tag in tags %}
+    <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+    {% endfor %}
+</p>
+{% endif %}
 
 <form>
     <button formmethod="GET" formaction="/users/{{post.user_id}}">Cancel</button>
